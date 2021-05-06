@@ -1,6 +1,6 @@
 # Dotfiles
 
-Standard configuration.
+My standard configuration.
 
 Usage:
 ```
