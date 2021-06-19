@@ -1,0 +1,7 @@
+shell:
+  program: /usr/bin/zsh
+
+font:
+  normal:
+    family: "MesloLGS NF"
+    style: Regular
