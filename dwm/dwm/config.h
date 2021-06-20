@@ -69,9 +69,10 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *lockcmd[] = { "slock", NULL };
 static const char *startstuffcmd[] = { "/home/rafa/startstuff.sh", NULL };
-static const char *incvolumecmd[] = { "pamixer", "-i", "5" };
-static const char *decvolumecmd[] = { "pamixer", "-d", "5" };
-static const char *tgmuteoutcmd[] = { "pamixer", "-t" }; /* toggle mute output */
+static const char *incvolumecmd[] = { "pamixer", "-i", "5", NULL };
+static const char *decvolumecmd[] = { "pamixer", "-d", "5", NULL };
+static const char *tgmuteoutcmd[] = { "pamixer", "-t", NULL }; /* toggle mute output */
+static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,6 +115,7 @@ static Key keys[] = {
 	{0,				XF86XK_AudioRaiseVolume,	spawn,	{.v = incvolumecmd } },
 	{0,				XF86XK_AudioLowerVolume,	spawn,	{.v = decvolumecmd } },
 	{0,				XF86XK_AudioMute,	spawn,	{.v = tgmuteoutcmd } },
+	{0,				XK_Pause,  spawn,	   {.v = playpausecmd } },
 };
 
 /* button definitions */
