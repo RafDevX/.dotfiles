@@ -1,4 +1,4 @@
-setxkbmap pt
+setxkbmap -option compose:rctrl pt
 
 export PATH=$HOME/bin:$PATH
 
