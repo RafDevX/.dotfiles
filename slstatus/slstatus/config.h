@@ -70,6 +70,7 @@ static const struct arg args[] = {
 	{ datetime,      "  %s",     "%F %T" },*/
 	{ separator,		"  ",		NULL },
 	{ run_command,		"🔊 %s",	"pamixer --get-volume-human" },
+	{ run_command,		" (%s)",	"playerctl --player=spotify status" },
 	{ separator,		"  |  ",	NULL },
 	{ battery_perc,		"🔋 %s%%",	"BAT1" },
 	{ battery_state,	" (%s)",	"BAT1" },
