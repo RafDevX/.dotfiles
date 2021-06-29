@@ -1,5 +1,18 @@
 include "%L"
 
+<Multi_key> <C> <x> : "Ĉ"
+<Multi_key> <G> <x> : "Ĝ"
+<Multi_key> <H> <x> : "Ĥ"
+<Multi_key> <J> <x> : "Ĵ"
+<Multi_key> <S> <x> : "Ŝ"
+<Multi_key> <U> <x> : "Ŭ"
+<Multi_key> <c> <x> : "ĉ"
+<Multi_key> <g> <x> : "ĝ"
+<Multi_key> <h> <x> : "ĥ"
+<Multi_key> <j> <x> : "ĵ"
+<Multi_key> <s> <x> : "ŝ"
+<Multi_key> <u> <x> : "ŭ"
+
 <Multi_key> <s> <h> <r> <u> <g> : "¯\_(ツ)_/¯"
 <Multi_key> <equal> <minus> : "≡"
 <Multi_key> <m> <0> : "∅"
