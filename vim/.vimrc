@@ -72,6 +72,8 @@ vnoremap <C-p> "+gP
 " RAF: misc
 filetype plugin indent on
 runtime macros/matchit.vim
+set tabstop=4
+set shiftwidth=0
 set autoindent
 set backspace=indent,eol,start
 set hidden
