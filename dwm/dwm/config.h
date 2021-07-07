@@ -73,6 +73,7 @@ static const char *incvolumecmd[] = { "pamixer", "-i", "5", NULL };
 static const char *decvolumecmd[] = { "pamixer", "-d", "5", NULL };
 static const char *tgmuteoutcmd[] = { "pamixer", "-t", NULL }; /* toggle mute output */
 static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
+static const char *ppspotifycmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -114,8 +115,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{0,				XF86XK_AudioRaiseVolume,	spawn,	{.v = incvolumecmd } },
 	{0,				XF86XK_AudioLowerVolume,	spawn,	{.v = decvolumecmd } },
-	{0,				XF86XK_AudioMute,	spawn,	{.v = tgmuteoutcmd } },
-	{0,				XK_Pause,  spawn,	   {.v = playpausecmd } },
+	{0,				XF86XK_AudioMute,			spawn,	{.v = tgmuteoutcmd } },
+	{0,				XK_Pause,  					spawn,	{.v = playpausecmd } },
+	{ ShiftMask,	XK_Pause,  					spawn,	{.v = ppspotifycmd } },
 };
 
 /* button definitions */
