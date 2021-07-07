@@ -72,6 +72,8 @@ static const struct arg args[] = {
 	{ run_command,		"🔊 %s",	"pamixer --get-volume-human" },
 	{ run_command,		" (%s)",	"playerctl --player=spotify status" },
 	{ separator,		"  |  ",	NULL },
+	{ wifi_essid,		"📶 %s",	"wlo1" },
+	{ separator,		"  |  ",	NULL },
 	{ battery_perc,		"🔋 %s%%",	"BAT1" },
 	{ battery_state,	" (%s)",	"BAT1" },
 	{ separator,		"  |  ",	NULL },
