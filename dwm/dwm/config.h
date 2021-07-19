@@ -3,20 +3,21 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Noto Mono:size=10",
-					"Noto Fonts Emoji:size=10:antialias=true:autohint=true",
-					"monospace:size=10" };
-static const char dmenufont[]       = "MesloLGS:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
+static const unsigned int borderpx	= 1;		/* border pixel of windows */
+static const unsigned int snap		= 32;		/* snap pixel */
+static const int showbar			= 1;		/* 0 means no bar */
+static const int topbar				= 1;		/* 0 means bottom bar */
+static const char *fonts[]			= { "Noto Mono:size=10",
+										"Font Awesome 5 Free Solid:size=10",
+										"Noto Fonts Emoji:size=10:antialias=true:autohint=true",
+										"monospace:size=10" };
+static const char dmenufont[]		= "MesloLGS:size=10";
+static const char col_gray1[]		= "#222222";
+static const char col_gray2[]		= "#444444";
+static const char col_gray3[]		= "#bbbbbb";
+static const char col_gray4[]		= "#eeeeee";
+static const char col_cyan[]		= "#005577";
+static const char *colors[][3]		= {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
@@ -31,18 +32,18 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Brave",    NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "discord",  NULL,       NULL,       1 << 2,       0,           1  },
-	{ "Slack",    NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Mattermost",NULL,      NULL,       1 << 4,       0,           -1 },
-	{ NULL,       "spotify",  NULL,       1 << 5,       0,           -1 },
-	{ "flameshot",NULL,	  NULL,	      0,            1,           -1 },
+	{ "Brave",		NULL,		NULL,		1 << 1,			0,			-1 },
+	{ "discord",	NULL,		NULL,		1 << 2,			0,			 1 },
+	{ "Slack",		NULL,		NULL,		1 << 3,			0,			-1 },
+	{ "Mattermost",	NULL,		NULL,		1 << 4,			0,			-1 },
+	{ "spotify",	NULL,		NULL,		1 << 5,			0,			-1 }, /* spotify does not respect this! */
+	{ "flameshot",	NULL,		NULL,		0,				1,			-1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const float mfact		= 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster		= 1;    /* number of clients in master area */
+static const int resizehints	= 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -72,8 +73,12 @@ static const char *startstuffcmd[] = { "/home/rafa/startstuff.sh", NULL };
 static const char *incvolumecmd[] = { "pamixer", "-i", "5", NULL };
 static const char *decvolumecmd[] = { "pamixer", "-d", "5", NULL };
 static const char *tgmuteoutcmd[] = { "pamixer", "-t", NULL }; /* toggle mute output */
+static const char *tgmuteinpcmd[] = { "pulsemixer", "--id", "source-1", "--toggle-mute", NULL }; /* toggle mute input */
 static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
 static const char *ppspotifycmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
+static const char *incbrightcmd[] = { "xbacklight", "-inc", "5", NULL };
+static const char *decbrightcmd[] = { "xbacklight", "-dec", "5", NULL };
+static const char *tgrdshiftcmd[] = { "pkill", "-USR1", "^redshift$", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -116,9 +121,15 @@ static Key keys[] = {
 	{0,				XF86XK_AudioRaiseVolume,	spawn,	{.v = incvolumecmd } },
 	{0,				XF86XK_AudioLowerVolume,	spawn,	{.v = decvolumecmd } },
 	{0,				XF86XK_AudioMute,			spawn,	{.v = tgmuteoutcmd } },
+	{0,				XF86XK_AudioMicMute,		spawn,	{.v = tgmuteinpcmd } },
 	{0,				XK_Pause,  					spawn,	{.v = playpausecmd } },
 	{ ShiftMask,	XK_Pause,  					spawn,	{.v = ppspotifycmd } },
+	{0,				XF86XK_MonBrightnessUp,		spawn,	{.v = incbrightcmd } },
+	{0,				XF86XK_MonBrightnessDown,	spawn,	{.v = decbrightcmd } },
+	{0,				XF86XK_ScreenSaver,			spawn,	{.v = tgrdshiftcmd } },
 };
+
+/* NOTE: use `xev -event keyboard` to get keys' names */
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
