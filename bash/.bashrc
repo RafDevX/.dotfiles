@@ -8,6 +8,8 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+source .aliases
+
 if [ "$(tty)" = "/dev/tty1" ]; then
 	exec startx
 fi
