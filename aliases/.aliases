@@ -1,0 +1,9 @@
+alias ssh='TERM=xterm-256color ssh'
+alias pip='python -m pip'
+alias memcheck='valgrind --leak-check=yes'
+alias qalc='qalc -s lowe'
+alias f5slstatus='cd ~/slstatus; sudo make install; pkill slstatus; slstatus & disown'
+
+alias dotfiles='cd ~/dotfiles'
+
+source ~/.shortcuts # aliases to easily access dirs; specific to each machine
