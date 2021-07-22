@@ -73,7 +73,7 @@ static const char *startstuffcmd[] = { "/home/rafa/startstuff.sh", NULL };
 static const char *incvolumecmd[] = { "pamixer", "-i", "5", NULL };
 static const char *decvolumecmd[] = { "pamixer", "-d", "5", NULL };
 static const char *tgmuteoutcmd[] = { "pamixer", "-t", NULL }; /* toggle mute output */
-static const char *tgmuteinpcmd[] = { "pulsemixer", "--id", "source-1", "--toggle-mute", NULL }; /* toggle mute input */
+static const char *tgmuteinpcmd[] = { "pulsemixer", "--id", "source-2", "--toggle-mute", NULL }; /* toggle mute input */
 static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
 static const char *ppspotifycmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
 static const char *incbrightcmd[] = { "xbacklight", "-inc", "5", NULL };
