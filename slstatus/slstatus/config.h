@@ -66,12 +66,11 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function format          argument */
 	{ separator,		"  ",		NULL								},
-	{ run_command,		" %s",		"pamixer --get-volume-human"		},
-	{ run_command,		" (%s)",	"playerctl --player=spotify status"	},
+	{ run_command,		"%s",		"~/slstatus/components/volume.sh"	},
 	{ separator,		"  |  ",	NULL								},
 	{ wifi_essid,		" %s",		"wlo1"								},
 	{ separator,		"  |  ",	NULL								},
-	{ battery_perc,		" %s%%",	"BAT1"								},
+	{ run_command,		"%s",		"~/slstatus/components/battery.sh"	},
 	{ battery_state,	" (%s)",	"BAT1"								},
 	{ separator,		"  |  ",	NULL								},
 	{ datetime,			" %s",		"%a %F %T"							},
