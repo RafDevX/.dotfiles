@@ -65,18 +65,15 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	/*{ battery_perc,  "  %s%% ",   "BAT1"  },
-	{ battery_state, "(%s)  |", "BAT1" },
-	{ datetime,      "  %s",     "%F %T" },*/
-	{ separator,		"  ",		NULL },
-	{ run_command,		"🔊 %s",	"pamixer --get-volume-human" },
-	{ run_command,		" (%s)",	"playerctl --player=spotify status" },
-	{ separator,		"  |  ",	NULL },
-	{ wifi_essid,		"📶 %s",	"wlo1" },
-	{ separator,		"  |  ",	NULL },
-	{ battery_perc,		"🔋 %s%%",	"BAT1" },
-	{ battery_state,	" (%s)",	"BAT1" },
-	{ separator,		"  |  ",	NULL },
-	{ datetime,		"🕒 %s",	"%F %T" },
-	{ separator,		"  ",		NULL },
+	{ separator,		"  ",		NULL								},
+	{ run_command,		" %s",		"pamixer --get-volume-human"		},
+	{ run_command,		" (%s)",	"playerctl --player=spotify status"	},
+	{ separator,		"  |  ",	NULL								},
+	{ wifi_essid,		" %s",		"wlo1"								},
+	{ separator,		"  |  ",	NULL								},
+	{ battery_perc,		" %s%%",	"BAT1"								},
+	{ battery_state,	" (%s)",	"BAT1"								},
+	{ separator,		"  |  ",	NULL								},
+	{ datetime,			" %s",		"%a %F %T"							},
+	{ separator,		"  ",		NULL								},
 };
