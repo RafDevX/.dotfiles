@@ -76,6 +76,8 @@ static const char *tgmuteoutcmd[] = { "pamixer", "-t", NULL }; /* toggle mute ou
 static const char *tgmuteinpcmd[] = { "pulsemixer", "--id", "source-2", "--toggle-mute", NULL }; /* toggle mute input */
 static const char *playpausecmd[] = { "playerctl", "play-pause", NULL };
 static const char *ppspotifycmd[] = { "playerctl", "--player=spotify", "play-pause", NULL };
+static const char *nxspotifycmd[] = { "playerctl", "--player=spotify", "next", NULL };
+static const char *prspotifycmd[] = { "playerctl", "--player=spotify", "previous", NULL };
 static const char *incbrightcmd[] = { "xbacklight", "-inc", "5", NULL };
 static const char *decbrightcmd[] = { "xbacklight", "-dec", "5", NULL };
 static const char *tgrdshiftcmd[] = { "pkill", "-USR1", "^redshift$", NULL };
@@ -124,6 +126,8 @@ static Key keys[] = {
 	{0,				XF86XK_AudioMicMute,		spawn,	{.v = tgmuteinpcmd } },
 	{0,				XK_Pause,  					spawn,	{.v = playpausecmd } },
 	{ ShiftMask,	XK_Pause,  					spawn,	{.v = ppspotifycmd } },
+	{ Mod5Mask,		XK_Left,  					spawn,	{.v = prspotifycmd } },
+	{ Mod5Mask,		XK_Right, 					spawn,	{.v = nxspotifycmd } },
 	{0,				XF86XK_MonBrightnessUp,		spawn,	{.v = incbrightcmd } },
 	{0,				XF86XK_MonBrightnessDown,	spawn,	{.v = decbrightcmd } },
 	{0,				XF86XK_ScreenSaver,			spawn,	{.v = tgrdshiftcmd } },
