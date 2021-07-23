@@ -1,0 +1,43 @@
+#!/bin/sh
+
+export HOSTNAME="$(cat /etc/hostname)"
+export RESTIC_REPOSITORY="rclone:ulisboa:$HOSTNAME.restic"
+
+# colors are also bold
+RED="\e[1;31m"
+GRN="\e[1;32m"
+YEL="\e[1;93m"
+BLU="\e[1;94m"
+CLR="\e[0m"
+
+sep() { echo -e "${YEL}##################################################${CLR}"; }
+
+if [ "$HOME" = "" ]; then
+	echo -e "${RED}ACTION REQUIRED: \$HOME ENVIRONMENT VARIABLE IS NOT SET, ABORTING"
+	exit 3
+fi
+
+echo -e "${BLU}Starting backup for ${GRN}$HOSTNAME${BLU}...${CLR}"
+sep
+echo -e "${BLU}Please enter the password for restic repository ${GRN}$RESTIC_REPOSITORY${BLU}:${CLR}"
+read -rsp "Password: " RESTIC_PASSWORD
+export RESTIC_PASSWORD
+echo ""
+sep
+if restic --one-file-system --verbose backup $HOME --exclude="$HOME/.cache" --exclude="$HOME/MOK.priv"; then
+	sep
+	echo -e "${BLU}Checking if everything is OK${CLR}"
+	sep
+	if restic check; then
+		sep
+		echo -e "${GRN}All good!${CLR}"
+	else
+		echo -e "${RED}ACTION REQUIRED: BACKUPS ARE CORRUPTED${CLR}"
+		exit 2
+	fi
+else
+	echo -e "${RED}ACTION REQUIRED: BACKUP FAILED${CLR}"
+	exit 1
+fi
+
+# vim: set syntax=sh:
