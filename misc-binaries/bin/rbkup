@@ -24,7 +24,7 @@ read -rsp "Password: " RESTIC_PASSWORD
 export RESTIC_PASSWORD
 echo ""
 sep
-if restic --one-file-system --verbose backup $HOME --exclude="$HOME/.cache" --exclude="$HOME/MOK.priv"; then
+if restic --one-file-system --verbose backup $HOME --exclude="$HOME/.cache" --exclude="$HOME/.config/**/*[Cc]ache*" --exclude="$HOME/.local/share/Trash" --exclude="$HOME/MOK.priv"; then
 	sep
 	echo -e "${BLU}Checking if everything is OK${CLR}"
 	sep
