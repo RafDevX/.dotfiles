@@ -92,6 +92,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'cespare/vim-toml'
 Plug 'wakatime/vim-wakatime'
 
 call plug#end()
