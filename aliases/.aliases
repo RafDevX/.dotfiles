@@ -3,6 +3,7 @@ alias pip='python -m pip'
 alias memcheck='valgrind --leak-check=yes'
 alias qalc='qalc -s lowe'
 alias f5slstatus='cd ~/slstatus; sudo make install; pkill slstatus; slstatus & disown'
+alias cat='ccat'
 
 alias dotfiles='cd ~/dotfiles'
 
