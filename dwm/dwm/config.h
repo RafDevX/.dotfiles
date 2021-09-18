@@ -70,6 +70,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *lockcmd[] = { "slock", NULL };
 static const char *startstuffcmd[] = { "/home/rafa/bin/startstuff", NULL };
+static const char *testsoundcmd[] = { "brave", "https://www.youtube.com/watch?v=bxqLsrlakK8", NULL };
 static const char *incvolumecmd[] = { "pamixer", "-i", "5", NULL };
 static const char *decvolumecmd[] = { "pamixer", "-d", "5", NULL };
 static const char *tgmuteoutcmd[] = { "pamixer", "-t", NULL }; /* toggle mute output */
@@ -89,6 +90,7 @@ static Key keys[] = {
 	{ 0,				XK_Print,  spawn,	   {.v = screenshotcmd } },
 	{ MODKEY,			XK_o,	   spawn,	   {.v = lockcmd } },
 	{ MODKEY|ControlMask|ShiftMask,	XK_s,	   spawn,	   {.v = startstuffcmd } },
+	{ MODKEY|ControlMask|ShiftMask,	XK_r,	   spawn,	   {.v = testsoundcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
