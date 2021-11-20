@@ -1,0 +1,19 @@
+#!/bin/sh
+
+USERNAME="ist199311"
+DOMAIN="IST.UTL.PT"
+
+PE_CMDS="" # ignore anything from environment, for now
+PE_CMDS="$PE_CMDS\nsettitle Kerberos Init Utility"
+PE_CMDS="$PE_CMDS\nsetdesc Enter password for $USERNAME@$DOMAIN so a TGT can be obtained"
+PE_CMDS="$PE_CMDS\nsetprompt Password:"
+PE_CMDS="$PE_CMDS\ngetpin"
+PE_CMDS="$PE_CMDS\nbye"
+
+echo -e "$PE_CMDS" | pinentry | grep '^D\s' | cut -c 3- | kinit $USERNAME@$DOMAIN && OK=y || OK=n
+
+if [ $OK = 'y' ]; then
+	notify-send --app-name="Kerberos" --urgency=normal "TGT Acquired" "You can now login as $USERNAME on $DOMAIN"
+else
+	notify-send --app-name="Kerberos" --urgency=critical "Failed to Acquire TGT" "Try to get one manually"
+fi
