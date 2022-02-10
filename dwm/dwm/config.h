@@ -8,7 +8,7 @@ static const unsigned int snap		= 32;		/* snap pixel */
 static const int showbar			= 1;		/* 0 means no bar */
 static const int topbar				= 1;		/* 0 means bottom bar */
 static const char *fonts[]			= { "Noto Mono:size=10",
-										"Font Awesome 5 Free:size=10:style=Solid",
+										"Font Awesome 6 Free:size=10:style=Solid",
 										"Noto Fonts Emoji:size=10:antialias=true:autohint=true",
 										"monospace:size=10" };
 static const char dmenufont[]		= "MesloLGS:size=10";
