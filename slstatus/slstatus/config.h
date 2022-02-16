@@ -74,5 +74,6 @@ static const struct arg args[] = {
 	{ battery_state,	" (%s)",	"BAT1"								},
 	{ separator,		"  |  ",	NULL								},
 	{ datetime,			" %s",		"%a %F %T"							},
+	{ run_command,		"%s",		"~/slstatus/components/dunst.sh"	},
 	{ separator,		"  ",		NULL								},
 };

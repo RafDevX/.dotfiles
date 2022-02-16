@@ -82,6 +82,7 @@ static const char *prspotifycmd[] = { "playerctl", "--player=spotify", "previous
 static const char *incbrightcmd[] = { "xbacklight", "-inc", "5", NULL };
 static const char *decbrightcmd[] = { "xbacklight", "-dec", "5", NULL };
 static const char *tgrdshiftcmd[] = { "pkill", "-USR1", "^redshift$", NULL };
+static const char *tgpsdunstcmd[] = { "dunstctl", "set-paused", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -133,6 +134,7 @@ static Key keys[] = {
 	{0,				XF86XK_MonBrightnessUp,		spawn,	{.v = incbrightcmd } },
 	{0,				XF86XK_MonBrightnessDown,	spawn,	{.v = decbrightcmd } },
 	{0,				XF86XK_ScreenSaver,			spawn,	{.v = tgrdshiftcmd } },
+	{ Mod1Mask,		XK_F12,						spawn,	{.v = tgpsdunstcmd } },
 };
 
 /* NOTE: use `xev -event keyboard` to get keys' names */
