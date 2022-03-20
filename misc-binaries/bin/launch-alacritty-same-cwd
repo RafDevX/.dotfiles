@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+ALACRITTY="$(realpath $(command -v alacritty))"
+ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
+TERM_PID=$(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3)
+
+is_shell() {
+    pid=$1
+
+    if ! [ -e "/proc/$pid/exe" ]; then
+        return 1
+    fi
+
+    exe="$(basename $(readlink /proc/$pid/exe))"
+    for shell in {,ba,z,fi,k,c,da,a,tc,pw,sc,p,sa}sh ch eshell rc; do
+        if [ "a$shell" = "a$exe" ]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+WD=$HOME
+if [ -e "/proc/$TERM_PID/exe" ] && [ "a$(readlink /proc/$TERM_PID/exe)" = "a$ALACRITTY" ]; then
+    for pid in $(pgrep -P $TERM_PID) ; do
+        if (is_shell $pid) && [ -e "/proc/$pid/cwd" ]; then
+            WD="$(readlink /proc/$pid/cwd)"
+            break
+        fi
+    done
+fi
+
+exec alacritty --working-directory "$WD"
