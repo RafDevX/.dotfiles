@@ -4,6 +4,7 @@ alias memcheck='valgrind --leak-check=yes'
 alias qalc='qalc -s lowe'
 alias f5slstatus='cd ~/slstatus; sudo make install; pkill slstatus; slstatus & disown'
 alias cat='ccat'
+alias mv='mv -i'
 
 alias dotfiles='cd ~/dotfiles'
 
