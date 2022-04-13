@@ -15,6 +15,7 @@ include "%L"
 
 <Multi_key> <s> <h> <r> <u> <g> : "¯\_(ツ)_/¯"
 <Multi_key> <equal> <minus> : "≡"
+<Multi_key> <exclam> <equal> : "≠" # by default, slash+equal also works
 <Multi_key> <m> <0> : "∅"
 <Multi_key> <m> <U> : "∪"
 <Multi_key> <m> <I> : "∩"
