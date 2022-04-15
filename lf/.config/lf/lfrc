@@ -1,6 +1,6 @@
 set shell zsh
 # zsh does not split words by default (see https://github.com/gokcehan/lf/wiki/Tips#split-words-by-default-in-zsh)
-set shellopts '--sh-word-split --err-exit --no-unset'
+set shellopts '-euy' # = --sh-word-split --err-exit --no-unset
 set icons
 
 %[ $LF_LEVEL -eq 1 ] || echo "WARNING: You're in a nested lf instance!"
