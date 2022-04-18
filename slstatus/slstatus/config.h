@@ -73,6 +73,7 @@ static const struct arg args[] = {
 	{ run_command,		"%s",		"~/slstatus/components/battery.sh"	},
 	{ battery_state,	" (%s)",	"BAT1"								},
 	{ separator,		"  |  ",	NULL								},
+	{ run_command,		"%s",		"~/slstatus/components/timew.sh"	},
 	{ datetime,			" %s",		"%a %F %T"							},
 	{ run_command,		"%s",		"~/slstatus/components/dunst.sh"	},
 	{ separator,		"  ",		NULL								},
