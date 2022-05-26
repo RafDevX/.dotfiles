@@ -15,7 +15,7 @@ dunst &
 picom &
 flameshot &
 redshift -l 38.71667:-9.13333 & # hardcoded to lx
-echo 'ping google.com & sleep 7 && kill $!' | bash & # trigger all network mechanisms
+echo 'ping rso.pt & sleep 7 && kill $!' | bash & # trigger all network mechanisms
 
 # (*) = ampersand not needed, but I guess it makes loading faster
 
