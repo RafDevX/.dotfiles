@@ -10,7 +10,28 @@ cd dotfiles
 stow NAME # repeat for compose, tmux, vim, etc.
 ```
 
-### Git Configuration
+## Packages
+
+### Suckless
+Suckless programs should not be installed through the package manager, but rather run:
+```
+$ git clone git://git.suckless.org/PACKAGE_NAME_HERE
+$ cd dwm
+$ make
+# make install
+```
+for `dwm`, `slstatus` and `slock`.
+
+### Commonly Installed Packages
+Note these should be installed on a need-to-have basis.
+
+```
+paru -S ttf-font-awesome otf-font-awesome
+```
+
+<!-- TODO: table -->
+
+## Git Configuration
 
 Due to it differing from machine to machine, a git configuration file is not included. However, it should vaguely look like the following:
 
