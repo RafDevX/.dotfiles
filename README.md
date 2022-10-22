@@ -26,7 +26,7 @@ for `dwm`, `slstatus` and `slock`.
 Note these should be installed on a need-to-have basis.
 
 ```
-paru -S ttf-font-awesome otf-font-awesome
+paru -S ttf-font-awesome otf-font-awesome clipmenu
 ```
 
 <!-- TODO: table -->

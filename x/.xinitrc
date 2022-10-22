@@ -14,6 +14,7 @@ xautolock -time 5 -locker "slock" -detectsleep -corners 000- &
 dunst &
 picom &
 flameshot &
+clipmenud &
 redshift -l 38.71667:-9.13333 & # hardcoded to lx
 echo 'ping rso.pt & sleep 7 && kill $!' | bash & # trigger all network mechanisms
 

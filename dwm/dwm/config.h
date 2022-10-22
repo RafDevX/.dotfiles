@@ -84,6 +84,7 @@ static const char *incbrightcmd[] = { "xbacklight", "-inc", "5", NULL };
 static const char *decbrightcmd[] = { "xbacklight", "-dec", "5", NULL };
 static const char *tgrdshiftcmd[] = { "pkill", "-USR1", "^redshift$", NULL };
 static const char *tgpsdunstcmd[] = { "dunstctl", "set-paused", "toggle", NULL };
+static const char *clipmenupcmd[] = { "clipmenu", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -93,6 +94,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_o,	   spawn,	   {.v = lockcmd } },
 	{ MODKEY|ControlMask|ShiftMask,	XK_s,	   spawn,	   {.v = startstuffcmd } },
 	{ MODKEY|ControlMask|ShiftMask,	XK_r,	   spawn,	   {.v = testsoundcmd } },
+	{ MODKEY,						XK_v,	   spawn,      {.v = clipmenupcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
