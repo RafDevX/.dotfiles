@@ -70,6 +70,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-i", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *lockcmd[] = { "slock", NULL };
+static const char *locksuspendcmd[] = { "locksuspend", NULL };
 static const char *startstuffcmd[] = { "/home/rafa/bin/startstuff", NULL };
 static const char *testsoundcmd[] = { "brave", "https://www.youtube.com/watch?v=bxqLsrlakK8", NULL };
 static const char *incvolumecmd[] = { "pamixer", "-i", "5", NULL };
@@ -92,6 +93,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ 0,				XK_Print,  spawn,	   {.v = screenshotcmd } },
 	{ MODKEY,			XK_o,	   spawn,	   {.v = lockcmd } },
+	{ MODKEY|ShiftMask,	XK_o,	   spawn,      {.v = locksuspendcmd } },
 	{ MODKEY|ControlMask|ShiftMask,	XK_s,	   spawn,	   {.v = startstuffcmd } },
 	{ MODKEY|ControlMask|ShiftMask,	XK_r,	   spawn,	   {.v = testsoundcmd } },
 	{ MODKEY,						XK_v,	   spawn,      {.v = clipmenupcmd } },
