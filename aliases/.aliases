@@ -1,12 +1,18 @@
 alias ssh='TERM=xterm-256color ssh'
 alias pip='python -m pip'
 alias memcheck='valgrind --leak-check=yes'
-alias qalc='qalc -s lowe'
+alias qalc='qalc -s lowe -s "exp -1" -s "group 1"'
 alias f5slstatus='cd ~/slstatus; sudo make install; pkill slstatus; slstatus & disown'
-alias cat='ccat'
+alias cat='bat' # previously ccat
 alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -I'
 alias t='trash'
+alias ip='ip -c'
 
 alias dotfiles='cd ~/dotfiles'
+
+# not really an alias but oh well
+tmp() { mkdir -p /tmp/$1; cd /tmp/$1; }
 
 source ~/.shortcuts # aliases to easily access dirs; specific to each machine
