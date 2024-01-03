@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.ghcup/bin:$PATH:$HOME/.cargo/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/rafa/.oh-my-zsh"
@@ -158,7 +158,18 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit
 compinit
 
+export _JAVA_WM_NONREPARENTING=1
+source /usr/share/nvm/init-nvm.sh
+
 source $HOME/.aliases
+
+eval $(thefuck --alias)
+alias pls='fuck'
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
