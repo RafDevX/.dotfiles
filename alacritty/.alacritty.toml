@@ -1,0 +1,10 @@
+[font.normal]
+family = "MesloLGS NF"
+style = "Regular"
+
+[colors.primary]
+background = "#1d1f21"
+foreground = "#c5c8c6"
+
+[shell]
+program = "/usr/bin/zsh"
