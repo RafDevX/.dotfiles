@@ -1,7 +1,9 @@
 #!/bin/sh
 
-export HOSTNAME="$(cat /etc/hostname)"
-export RESTIC_REPOSITORY="rclone:ulisboa:$HOSTNAME.restic"
+CONFIG_DIR="$HOME/.config/rbkup"
+EXCLUDE_FILE="$CONFIG_DIR/rbkup.exclude"
+ENV_FILE="$CONFIG_DIR/rbkup.env"
+[[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
 
 # colors are also bold
 RED="\e[1;31m"
@@ -12,10 +14,27 @@ CLR="\e[0m"
 
 sep() { echo -e "${YEL}##################################################${CLR}"; }
 
-if [ "$HOME" = "" ]; then
-	echo -e "${RED}ACTION REQUIRED: \$HOME ENVIRONMENT VARIABLE IS NOT SET, ABORTING"
-	exit 3
-fi
+require_var() {
+	if [ -z ${!1+x} ]; then
+		echo -e "${RED}ACTION REQUIRED: \$$1 ENVIROMENT VARIABLE IS NOT SET, ABORTING"
+		echo -e "You can specify it in $ENV_FILE or manually define it before calling this script.${CLR}"
+		exit 3
+	fi
+}
+
+require_var HOME # just to make sure
+require_var B2_BASE_ENDPOINT
+require_var B2_BASE_BUCKET # printf'able with %s for hostname
+require_var B2_APPLICATION_KEY_ID # needs listFiles,readFiles,writeFiles capabilities
+require_var B2_APPLICATION_KEY
+
+export HOSTNAME="$(cat /etc/hostname)"
+export B2_BUCKET="$(printf "$B2_BASE_BUCKET" "$HOSTNAME")"
+
+# restic recommends using s3 rather than b2 backend for now
+export RESTIC_REPOSITORY="s3:$B2_BASE_ENDPOINT/$B2_BUCKET"
+export AWS_ACCESS_KEY_ID="$B2_APPLICATION_KEY_ID"
+export AWS_SECRET_ACCESS_KEY="$B2_APPLICATION_KEY"
 
 echo -e "${BLU}Starting backup for ${GRN}$HOSTNAME${BLU}...${CLR}"
 sep
@@ -23,8 +42,8 @@ echo -e "${BLU}Please enter the password for restic repository ${GRN}$RESTIC_REP
 read -rsp "Password: " RESTIC_PASSWORD
 export RESTIC_PASSWORD
 echo ""
-sep
-if [ "$JUST_CHECK" = "1" ] || restic --one-file-system --verbose backup $HOME --exclude="$HOME/.cache" --exclude="$HOME/.config/**/*[Cc]ache*" --exclude="$HOME/.local/share/Trash" --exclude="$HOME/MOK.priv" --exclude="$HOME/.config/BraveSoftware/Brave-Browser" --exclude="$HOME/.config/Code" --exclude="$HOME/.local/share/Steam" --exclude="$HOME/.rustup"; then
+
+if [ "$JUST_CHECK" = "1" ] || restic --one-file-system --verbose backup $HOME --exclude-file="$EXCLUDE_FILE"; then
 	sep
 	echo -e "${BLU}Checking if everything is OK${CLR}"
 	sep
