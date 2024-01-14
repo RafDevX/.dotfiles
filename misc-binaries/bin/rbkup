@@ -38,10 +38,13 @@ export AWS_SECRET_ACCESS_KEY="$B2_APPLICATION_KEY"
 
 echo -e "${BLU}Starting backup for ${GRN}$HOSTNAME${BLU}...${CLR}"
 sep
-echo -e "${BLU}Please enter the password for restic repository ${GRN}$RESTIC_REPOSITORY${BLU}:${CLR}"
-read -rsp "Password: " RESTIC_PASSWORD
-export RESTIC_PASSWORD
-echo ""
+
+if [ -z ${RESTIC_PASSWORD+x} ]; then
+	echo -e "${BLU}Please enter the password for restic repository ${GRN}$RESTIC_REPOSITORY${BLU}:${CLR}"
+	read -rsp "Password: " RESTIC_PASSWORD
+	export RESTIC_PASSWORD
+	echo ""
+fi
 
 if [ "$JUST_CHECK" = "1" ] || restic --one-file-system --verbose backup $HOME --exclude-file="$EXCLUDE_FILE"; then
 	sep
