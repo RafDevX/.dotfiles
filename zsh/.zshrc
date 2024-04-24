@@ -158,6 +158,7 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit
 compinit
 
+export JAVA_HOME=/usr/lib/jvm/default-runtime
 export _JAVA_WM_NONREPARENTING=1
 source /usr/share/nvm/init-nvm.sh
 
