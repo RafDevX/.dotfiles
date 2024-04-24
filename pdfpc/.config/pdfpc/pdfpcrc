@@ -1,0 +1,2 @@
+# so scrolling notes does not change the slide
+option disable-scrolling true
