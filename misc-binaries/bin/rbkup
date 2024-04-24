@@ -57,7 +57,7 @@ if [ "$PRUNE_FIRST" = "1" ]; then
 	fi
 fi
 
-if [ "$JUST_CHECK" = "1" ] || restic --one-file-system --verbose backup $HOME --exclude-file="$EXCLUDE_FILE"; then
+if [ "$JUST_CHECK" = "1" ] || restic --one-file-system --verbose backup $HOME --exclude-caches --exclude-file="$EXCLUDE_FILE"; then
 	sep
 	echo -e "${BLU}Checking if everything is OK${CLR}"
 	sep
