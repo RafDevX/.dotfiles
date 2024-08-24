@@ -9,6 +9,7 @@ alias cp='cp -i'
 alias rm='rm -I'
 alias t='trash'
 alias ip='ip -c'
+alias fd='fd -H'
 
 alias dotfiles='cd ~/dotfiles'
 
