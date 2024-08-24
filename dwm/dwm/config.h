@@ -86,7 +86,7 @@ static const char *decbrightcmd[] = { "xbacklight", "-dec", "5", NULL };
 static const char *tgrdshiftcmd[] = { "pkill", "-USR1", "^redshift$", NULL };
 static const char *tgpsdunstcmd[] = { "dunstctl", "set-paused", "toggle", NULL };
 static const char *clipmenupcmd[] = { "clipmenu", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *emojimenucmd[] = { "bemoji", NULL };
+static const char *emojimenucmd[] = { "bemoji", "--noline", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
