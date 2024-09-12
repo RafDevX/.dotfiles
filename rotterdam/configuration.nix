@@ -67,6 +67,14 @@
   programs.zsh.enable = true;
   programs.vim.defaultEditor = true;
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.raf = {
+    home.stateVersion = "24.05";
+    home.username = "raf";
+    home.homeDirectory = "/home/raf";
+  };
+
   virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
