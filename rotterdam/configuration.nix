@@ -110,6 +110,11 @@
         };
       };
     };
+
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   virtualisation.docker.enable = true;
