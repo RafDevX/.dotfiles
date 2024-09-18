@@ -44,23 +44,6 @@
     createHome = true;
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      discord
-      brave
-      timewarrior
-      git
-      gnupg
-      pinentry-gnome3 # for gpg, TODO: remove
-      vscode
-      spotify
-      slack
-      flameshot
-      lf
-      zathura
-      mattermost-desktop
-      httpie
-    #  thunderbird
-    ];
   };
 
   programs.firefox.enable = true;
@@ -73,6 +56,26 @@
     home.stateVersion = "24.05";
     home.username = "raf";
     home.homeDirectory = "/home/raf";
+
+    home.packages = with pkgs; [
+      brave
+      discord
+      flameshot
+      mattermost-desktop
+      slack
+      spotify
+      vscode
+
+      git
+      gnupg
+      httpie
+      pinentry-gnome3 # for gpg, TODO: remove
+      lf
+      libqalculate
+      timewarrior
+      typst
+      zathura
+    ];
 
     programs.git = {
       enable = true;
