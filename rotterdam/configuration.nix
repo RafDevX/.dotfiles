@@ -101,6 +101,15 @@
           }
       ];
     };
+
+    programs.ssh = {
+      enable = true;
+      matchBlocks = {
+        "*.datasektionen.se" = {
+          user = "rmfseo";
+        };
+      };
+    };
   };
 
   virtualisation.docker.enable = true;
