@@ -77,6 +77,83 @@
       zathura
     ];
 
+    programs.zsh = {
+      enable = true;
+      shellAliases = {
+        cat = "bat";
+      };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "colored-man-pages"
+          "command-not-found"
+          "docker-compose"
+          "extract"
+          "git"
+          "safe-paste"
+        ];
+      };
+      initExtraFirst = ''
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+      '';
+      initExtra = "source ~/.p10k.zsh";
+      plugins = [
+        {
+          name = "powerlevel10k";
+          src = pkgs.zsh-powerlevel10k;
+          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
+        {
+          name = "zsh-autosuggestions";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-autosuggestions";
+            rev = "v0.7.0";
+            hash = "sha256-KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
+          };
+        }
+        {
+          name = "zsh-completions";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-completions";
+            rev = "0.35.0";
+            hash = "sha256-qSobM4PRXjfsvoXY6ENqJGI9NEAaFFzlij6MPeTfT0o=";
+          };
+        }
+        {
+          name = "zsh-syntax-highlighting";
+          src = pkgs.fetchFromGitHub {
+            owner = "zsh-users";
+            repo = "zsh-syntax-highlighting";
+            rev = "0.8.0";
+            hash = "sha256-iJdWopZwHpSyYl5/FQXEW7gl/SrKaYDEtTH9cGP7iPo=";
+          };
+        }
+      ];
+    };
+
+    programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    home.sessionVariables._ZO_ECHO = "1"; # echo matched dir before navigating
+
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.eza = {
+      enable = true;
+      enableZshIntegration = true;
+      git = true;
+    };
+
+    programs.bat.enable = true;
+
     programs.git = {
       enable = true;
       userName = "Rafael Oliveira";
@@ -88,6 +165,7 @@
       extraConfig = {
         core.whitespace = "tab-in-indent,tabwidth=4";
         init.defaultBranch = "master";
+        commit.verbose = true;
         pull.rebase = true;
         rerere.enabled = true;
         url."git@github.com:".pushinsteadOf = "https://github.com/";
@@ -116,6 +194,16 @@
       enableZshIntegration = true;
     };
   };
+
+  fonts.packages = with pkgs; [
+    fira-code
+    font-awesome
+    nerdfonts
+    noto-fonts
+    noto-fonts-extra
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+  ];
 
   virtualisation.docker.enable = true;
 
