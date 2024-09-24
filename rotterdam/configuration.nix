@@ -153,6 +153,7 @@
     };
 
     programs.bat.enable = true;
+    programs.htop.enable = true;
 
     programs.git = {
       enable = true;
