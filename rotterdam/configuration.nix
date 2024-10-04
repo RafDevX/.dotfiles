@@ -74,6 +74,8 @@
       libqalculate
       timewarrior
       typst
+      typst-lsp
+      typstyle
       zathura
     ];
 
