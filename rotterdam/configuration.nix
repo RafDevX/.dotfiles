@@ -95,18 +95,7 @@
           "safe-paste"
         ];
       };
-      initExtraFirst = ''
-        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        fi
-      '';
-      initExtra = "source ~/.p10k.zsh";
       plugins = [
-        {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
         {
           name = "zsh-autosuggestions";
           src = pkgs.fetchFromGitHub {
@@ -135,6 +124,11 @@
           };
         }
       ];
+    };
+
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
     };
 
     programs.zoxide = {
