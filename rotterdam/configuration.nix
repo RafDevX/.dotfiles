@@ -13,8 +13,11 @@
   networking.hostName = "rotterdam";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "Europe/Stockholm"; # TODO: enable auto tz switch
   i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = null;
+  services.automatic-timezoned.enable = true;
+  services.geoclue2.geoProviderUrl = "https://beacondb.net/v1/geolocate";
+  # ^ necessary because Mozilla Location Service has been shut down
 
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
