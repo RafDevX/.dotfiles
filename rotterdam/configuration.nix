@@ -43,7 +43,7 @@
   users.users.raf = {
     isNormalUser = true;
     description = "Raf";
-    hashedPassword = "$y$j9T$7kZrA1k9TExX62k37mrpa0$Woud8M1XOgszIaN8UDpTEJq0hrgmuXY60FfkVTVngV7"; # TODO: change
+    hashedPassword = "$y$j9T$AgJhH28Mik/VmKWy979af0$3Z9vLnJR.D/fp/g2ym.ZbxaAqDZay4fORkkBcGGlTi9";
     createHome = true;
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
