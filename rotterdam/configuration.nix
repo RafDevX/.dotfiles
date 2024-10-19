@@ -37,6 +37,7 @@
     pulse.enable = true;
   };
 
+  users.mutableUsers = false; # ensure users and groups are set declaratively
   users.users.raf = {
     isNormalUser = true;
     description = "Raf";
