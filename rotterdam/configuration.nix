@@ -1,10 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -46,7 +43,10 @@
     hashedPassword = "$y$j9T$AgJhH28Mik/VmKWy979af0$3Z9vLnJR.D/fp/g2ym.ZbxaAqDZay4fORkkBcGGlTi9";
     createHome = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   programs.firefox.enable = true;
@@ -171,12 +171,12 @@
         url."git@github.com:".pushinsteadOf = "https://github.com/";
       };
       includes = [
-          {
-            condition = "gitdir:~/Documents/KTH/";
-            contents.user = {
-              email = "rmfseo@kth.se";
-            };
-          }
+        {
+          condition = "gitdir:~/Documents/KTH/";
+          contents.user = {
+            email = "rmfseo@kth.se";
+          };
+        }
       ];
     };
 
@@ -217,7 +217,10 @@
 
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   system.stateVersion = "24.05";

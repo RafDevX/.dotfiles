@@ -10,15 +10,17 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
+  outputs =
+    { nixpkgs, home-manager, ... }:
+    {
+      nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./rotterdam/configuration.nix
-              home-manager.nixosModules.home-manager
-             ];
+          system = "x86_64-linux";
+          modules = [
+            ./rotterdam/configuration.nix
+            home-manager.nixosModules.home-manager
+          ];
         };
+      };
     };
-  };
 }
