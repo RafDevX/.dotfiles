@@ -47,12 +47,17 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
     ];
   };
 
   programs.firefox.enable = true;
   programs.zsh.enable = true;
   programs.vim.defaultEditor = true;
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark; # not CLI version
+  };
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
