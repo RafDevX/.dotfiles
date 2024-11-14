@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -83,9 +88,9 @@
       lf
       libqalculate
       timewarrior
-      typst
-      typst-lsp
-      typstyle
+      pkgs-unstable.typst
+      pkgs-unstable.typst-lsp
+      pkgs-unstable.typstyle
       zathura
     ];
 

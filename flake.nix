@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -11,11 +12,21 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }:
     {
       nixosConfigurations = {
-        rotterdam = nixpkgs.lib.nixosSystem {
+        rotterdam = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
+
+          specialArgs = {
+            pkgs-unstable = import nixpkgs-unstable { inherit system; };
+          };
+
           modules = [
             ./rotterdam/configuration.nix
             home-manager.nixosModules.home-manager
