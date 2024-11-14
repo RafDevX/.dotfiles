@@ -65,6 +65,7 @@
       brave
       discord
       flameshot
+      jetbrains.idea-ultimate # intelliJ :(
       mattermost-desktop
       slack
       spotify
@@ -82,6 +83,8 @@
       typstyle
       zathura
     ];
+
+    programs.java.enable = true;
 
     programs.zsh = {
       enable = true;
