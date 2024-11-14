@@ -89,7 +89,7 @@
       libqalculate
       timewarrior
       pkgs-unstable.typst
-      pkgs-unstable.typst-lsp
+      pkgs-unstable.tinymist # typst lsp
       pkgs-unstable.typstyle
       zathura
     ];
