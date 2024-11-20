@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }:
 
@@ -239,11 +240,26 @@
     ripgrep
   ];
 
-  nix.settings = {
-    auto-optimise-store = true;
-    experimental-features = [
-      "nix-command"
-      "flakes"
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+
+    # lock flake registry to keep sync'd with inputs
+    # (e.g., used by `nix run pkgs#name`)
+    registry = {
+      pkgs.flake = inputs.nixpkgs; # alias to nixpkgs
+      unstable.flake = inputs.nixpkgs-unstable;
+    };
+
+    nixPath = [
+      "nixpkgs=flake:pkgs"
+      "unstable=flake:unstable"
+      "/nix/var/nix/profiles/per-user/root/channels"
     ];
   };
 

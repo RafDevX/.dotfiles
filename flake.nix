@@ -17,13 +17,14 @@
       nixpkgs-unstable,
       home-manager,
       ...
-    }:
+    }@inputs:
     {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
 
           specialArgs = {
+            inherit inputs;
             pkgs-unstable = import nixpkgs-unstable { inherit system; };
           };
 
