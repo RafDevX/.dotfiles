@@ -93,6 +93,10 @@
       pkgs-unstable.tinymist # typst lsp
       pkgs-unstable.typstyle
       zathura
+
+      binutils # e.g., strings
+      file
+      unzip
     ];
 
     programs.java.enable = true;
