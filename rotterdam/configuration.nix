@@ -80,7 +80,6 @@
       mattermost-desktop
       slack
       spotify
-      vscode
 
       git
       gnupg
@@ -227,6 +226,34 @@
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
+
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        eamodio.gitlens
+        streetsidesoftware.code-spell-checker
+        tomoki1207.pdf # pdf preview
+        mkhl.direnv
+
+        jnoortheen.nix-ide
+        rust-lang.rust-analyzer
+        tamasfe.even-better-toml
+        myriad-dreamin.tinymist # typst
+        hashicorp.terraform
+        hashicorp.hcl
+        redhat.java
+      ];
+      userSettings = {
+        "files.autoSave" = "onFocusChange";
+        "files.insertFinalNewline" = true;
+        "files.trimFinalNewlines" = true;
+        "editor.formatOnSave" = true;
+        "editor.rulers" = [ 80 ];
+        "nix.formatterPath" = "nixfmt";
+        "tinymist.exportPdf" = "onDocumentHasTitle";
+        "tinymist.formatterMode" = "typstyle";
+      };
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -246,6 +273,7 @@
   environment.systemPackages = with pkgs; [
     fd
     ripgrep
+    nixfmt-rfc-style
   ];
 
   nix = {
