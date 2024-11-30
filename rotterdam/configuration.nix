@@ -242,17 +242,44 @@
         hashicorp.terraform
         hashicorp.hcl
         redhat.java
+        vue.volar
+        esbenp.prettier-vscode
       ];
-      userSettings = {
-        "files.autoSave" = "onFocusChange";
-        "files.insertFinalNewline" = true;
-        "files.trimFinalNewlines" = true;
-        "editor.formatOnSave" = true;
-        "editor.rulers" = [ 80 ];
-        "nix.formatterPath" = "nixfmt";
-        "tinymist.exportPdf" = "onDocumentHasTitle";
-        "tinymist.formatterMode" = "typstyle";
-      };
+      userSettings =
+        {
+          "files.autoSave" = "onFocusChange";
+          "files.insertFinalNewline" = true;
+          "files.trimFinalNewlines" = true;
+          "editor.formatOnSave" = true;
+          "editor.rulers" = [ 80 ];
+          "nix.formatterPath" = "nixfmt";
+          "tinymist.exportPdf" = "onDocumentHasTitle";
+          "tinymist.formatterMode" = "typstyle";
+        }
+        // (
+          let
+            prettierLangs = [
+              "javascript"
+              "typescript"
+              "json"
+              "jsonc"
+              "html"
+              "css"
+              "scss"
+              "markdown"
+              "yaml"
+              "vue"
+              "graphql"
+              "typescriptreact"
+              "javascriptreact"
+            ];
+            withBrackets = map (lang: "[${lang}]") prettierLangs;
+            scope = builtins.concatStringsSep "" withBrackets;
+          in
+          {
+            ${scope}."editor.defaultFormatter" = "esbenp.prettier-vscode";
+          }
+        );
     };
   };
 
