@@ -280,6 +280,22 @@
             ${scope}."editor.defaultFormatter" = "esbenp.prettier-vscode";
           }
         );
+      keybindings = [
+        {
+          key = "alt+t";
+          command = "editor.action.goToTypeDefinition";
+        }
+        {
+          key = "shift+alt+up";
+          command = "editor.action.copyLinesUpAction";
+          when = "editorTextFocus && !editorReadonly";
+        }
+        {
+          key = "shift+alt+down";
+          command = "editor.action.copyLinesDownAction";
+          when = "editorTextFocus && !editorReadonly";
+        }
+      ];
     };
   };
 
