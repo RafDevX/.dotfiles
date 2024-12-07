@@ -13,6 +13,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.enableRedistributableFirmware = true;
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 150; # ZRAM swap with 1.5x total physical RAM size
+  };
+
   networking.hostName = "rotterdam";
   networking.networkmanager.enable = true;
 
