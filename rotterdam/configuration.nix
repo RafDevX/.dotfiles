@@ -13,6 +13,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.enableRedistributableFirmware = true;
+  services.fwupd.enable = true; # firmware update utility
 
   zramSwap = {
     enable = true;
