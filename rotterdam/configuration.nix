@@ -42,6 +42,8 @@
 
   services.printing.enable = true; # enable CUPS
 
+  services.fprintd.enable = true; # enable fingerprint
+
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
