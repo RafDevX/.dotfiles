@@ -74,6 +74,7 @@
     enable = true;
     package = pkgs.wireshark; # not CLI version
   };
+  programs.steam.enable = true;
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
