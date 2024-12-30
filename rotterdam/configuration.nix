@@ -69,7 +69,10 @@
 
   programs.firefox.enable = true;
   programs.zsh.enable = true;
-  programs.vim.defaultEditor = true;
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark; # not CLI version
