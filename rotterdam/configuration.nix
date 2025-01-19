@@ -269,6 +269,9 @@
           "nix.formatterPath" = "nixfmt";
           "tinymist.exportPdf" = "onDocumentHasTitle";
           "tinymist.formatterMode" = "typstyle";
+          "[typst]" = {
+            "editor.wordSeparators" = "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?";
+          };
         }
         // (
           let
