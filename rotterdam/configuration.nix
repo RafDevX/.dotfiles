@@ -97,6 +97,7 @@
       mattermost-desktop
       slack
       spotify
+      zotero
 
       git
       gnupg
