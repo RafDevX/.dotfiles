@@ -114,6 +114,8 @@
       binutils # e.g., strings
       file
       unzip
+      dogdns
+      whois
     ];
 
     programs.java.enable = true;
